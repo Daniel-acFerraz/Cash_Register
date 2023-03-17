@@ -28,42 +28,16 @@ function checkCashRegister(price, cash, cid) {
     while (changeLeft >= cashValues[bills] && cidObj[bills] >= cashValues[bills]){
       changeLeft -= cashValues[bills]
       if(change.length === 0){
+        cidObj[bills] -= cashValues[bills]
         change.push([bills, cashValues[bills]/100])   
       }else if(change[index][0].indexOf(bills) != -1){
+        cidObj[bills] -= cashValues[bills]
         change[index][1] += cashValues[bills]/100
       }else {
+        cidObj[bills] -= cashValues[bills]
         change.push([bills, cashValues[bills]/100])
         index += 1
-      }
-        switch(bills) {
-        case "PENNY":
-        cidObj[bills] -= 1
-        break;
-        case "NICKEL":
-        cidObj[bills] -= 5
-        break;
-        case "DIME":
-        cidObj[bills] -= 10
-        break;
-        case "QUARTER":
-        cidObj[bills] -= 25
-        break;
-        case "ONE":
-        cidObj[bills] -= 100
-        break;
-        case "FIVE":
-        cidObj[bills] -= 500
-        break;
-        case "TEN":
-        cidObj[bills] -= 1000
-        break;
-        case "TWENTY":
-        cidObj[bills] -= 2000
-        break;
-        case "ONE HUNDRED":
-        cidObj[bills] -= 10000
-        break;
-      }
+      }        
     }
   }
 let cidTotal = 0;
